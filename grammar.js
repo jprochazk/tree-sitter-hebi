@@ -275,7 +275,7 @@ module.exports = grammar({
     nil: $ => seq('nil'),
 
     // Comments
-    comment: $ => token(seq('#', /[^\n]*/)),
+    comment: $ => token(seq('//', /[^\n]*/)),
 
     shebang: $ => token(seq('#!', /[^\n]*/)),
   },
