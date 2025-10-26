@@ -108,9 +108,9 @@ module.exports = grammar({
       optional($._return_value_expression),
     )),
 
-    break_expression: $ => seq('break'),
+    break_expression: $ => token('break'),
 
-    continue_expression: $ => seq('continue'),
+    continue_expression: $ => token('continue'),
 
     if_expression: $ => seq(
       'if',
@@ -252,19 +252,19 @@ module.exports = grammar({
       )
     ),
 
-    string: $ => token(seq(
-      '"',
+    string: $ => seq(
+      token('"'),
       repeat(choice(
         /[^"\\]/,
-        seq('\\', /./)
+        $.escape_sequence,
       )),
-      '"',
-    )),
+      token.immediate('"'),
+    ),
 
     escape_sequence: $ => token.immediate(seq(
       '\\',
       choice(
-        /[ntr"\\]/,
+        /[rtn"\\]/,
         /x[0-9a-fA-F]{2}/,
         /u\{[0-9a-fA-F]+\}/,
       ),
@@ -272,7 +272,7 @@ module.exports = grammar({
 
     boolean: $ => choice('true', 'false'),
 
-    nil: $ => seq('nil'),
+    nil: $ => token('nil'),
 
     // Comments
     comment: $ => token(seq('//', /[^\n]*/)),

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "hebi",
   "word": "identifier",
   "rules": {
@@ -384,22 +385,18 @@
       }
     },
     "break_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "break"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "break"
+      }
     },
     "continue_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "continue"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "continue"
+      }
     },
     "if_expression": {
       "type": "SEQ",
@@ -1321,45 +1318,39 @@
       }
     },
     "string": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "\""
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "PATTERN",
-                  "value": "[^\"\\\\]"
-                },
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "\\"
-                    },
-                    {
-                      "type": "PATTERN",
-                      "value": "."
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
             "type": "STRING",
             "value": "\""
           }
-        ]
-      }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\"\\\\]"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              }
+            ]
+          }
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "\""
+          }
+        }
+      ]
     },
     "escape_sequence": {
       "type": "IMMEDIATE_TOKEN",
@@ -1375,7 +1366,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[ntr\"\\\\]"
+                "value": "[rtn\"\\\\]"
               },
               {
                 "type": "PATTERN",
@@ -1404,13 +1395,11 @@
       ]
     },
     "nil": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "nil"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "nil"
+      }
     },
     "comment": {
       "type": "TOKEN",
@@ -1472,6 +1461,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-
