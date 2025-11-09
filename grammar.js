@@ -12,10 +12,39 @@ module.exports = grammar({
 
     // Statements
     _statement: $ => choice(
+      $.import_statement,
       $.variable_declaration,
       $.function_declaration,
       $.loop_statement,
       $.expression_statement,
+    ),
+
+    import_statement: $ => choice(
+      // import "string" as ident (whole module import)
+      seq(
+        'import',
+        field('source', $.string),
+        'as',
+        field('alias', $.identifier),
+      ),
+      // import a, b, c from "string" (named imports)
+      seq(
+        'import',
+        field('imports', $.import_specifiers),
+        'from',
+        field('source', $.string),
+      ),
+    ),
+
+    import_specifiers: $ => seq(
+      $.import_specifier,
+      repeat(seq(',', $.import_specifier)),
+      optional(','),
+    ),
+
+    import_specifier: $ => seq(
+      field('name', $.identifier),
+      optional(seq('as', field('alias', $.identifier))),
     ),
 
     variable_declaration: $ => seq(

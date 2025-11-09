@@ -2,6 +2,25 @@
 
 ;; Keywords
 
+(import_statement
+  "import" @keyword.control.import)
+
+(import_statement
+  "as" @keyword.control.import)
+
+(import_statement
+  "from" @keyword.control.import)
+
+;; Import identifiers
+(import_statement
+  alias: (identifier) @variable)
+
+(import_specifier
+  name: (identifier) @variable)
+
+(import_specifier
+  alias: (identifier) @variable)
+
 (if_expression
   "if" @keyword.control.conditional)
 
