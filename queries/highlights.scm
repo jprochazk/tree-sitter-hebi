@@ -11,16 +11,6 @@
 (import_statement
   "from" @keyword.control.import)
 
-;; Import identifiers
-(import_statement
-  alias: (identifier) @variable)
-
-(import_specifier
-  name: (identifier) @variable)
-
-(import_specifier
-  alias: (identifier) @variable)
-
 (if_expression
   "if" @keyword.control.conditional)
 
@@ -51,6 +41,16 @@
 
 (anonymous_function
   "fn" @keyword.function)
+
+;; Import identifiers
+(import_statement
+  alias: (identifier) @variable)
+
+(import_specifier
+  name: (identifier) @variable)
+
+(import_specifier
+  alias: (identifier) @variable)
 
 ;; Operators
 
