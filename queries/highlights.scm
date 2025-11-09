@@ -2,45 +2,21 @@
 
 ;; Keywords
 
-(import_statement
-  "import" @keyword.control.import)
-
-(import_statement
-  "as" @keyword.control.import)
-
-(import_statement
-  "from" @keyword.control.import)
-
-(if_expression
-  "if" @keyword.control.conditional)
-
-(if_expression
-  "else" @keyword.control.conditional)
-
-(loop_statement
-[
-  "loop"
-] @keyword.control.repeat)
-
-(return_expression
-  "return" @keyword.control.return)
+"import" @keyword.control.import
+"as" @keyword.control.import
+"from" @keyword.control.import
+"if" @keyword.control.conditional
+"else" @keyword.control.conditional
+"loop" @keyword.control.repeat
+"return" @keyword.control.return
+"do" @keyword
+"let" @keyword
+"fn" @keyword.function
 
 [
   (break_expression)
   (continue_expression)
 ] @keyword.control
-
-(do_expression
-  "do" @keyword)
-
-(variable_declaration
-  "let" @keyword)
-
-(function_declaration
-  "fn" @keyword.function)
-
-(anonymous_function
-  "fn" @keyword.function)
 
 ;; Import identifiers
 (import_statement
@@ -54,11 +30,9 @@
 
 ;; Operators
 
-[
-  "not"
-  "and"
-  "or"
-] @keyword.operator
+"not" @keyword.operator
+"and" @keyword.operator
+"or" @keyword.operator
 
 [
   "="
