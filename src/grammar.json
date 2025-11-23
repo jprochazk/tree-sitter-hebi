@@ -47,19 +47,7 @@
             },
             {
               "type": "FIELD",
-              "name": "source",
-              "content": {
-                "type": "SYMBOL",
-                "name": "string"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "as"
-            },
-            {
-              "type": "FIELD",
-              "name": "alias",
+              "name": "name",
               "content": {
                 "type": "SYMBOL",
                 "name": "identifier"
@@ -76,10 +64,10 @@
             },
             {
               "type": "FIELD",
-              "name": "imports",
+              "name": "name",
               "content": {
                 "type": "SYMBOL",
-                "name": "import_specifiers"
+                "name": "identifier"
               }
             },
             {
@@ -90,8 +78,63 @@
               "type": "FIELD",
               "name": "source",
               "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "import"
+            },
+            {
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "FIELD",
+              "name": "imports",
+              "content": {
                 "type": "SYMBOL",
-                "name": "string"
+                "name": "import_specifiers"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            },
+            {
+              "type": "STRING",
+              "value": "from"
+            },
+            {
+              "type": "FIELD",
+              "name": "source",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                ]
               }
             }
           ]

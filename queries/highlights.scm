@@ -20,7 +20,10 @@
 
 ;; Import identifiers
 (import_statement
-  alias: (identifier) @variable)
+  name: (identifier) @variable)
+
+(import_statement
+  source: (identifier) @variable)
 
 (import_specifier
   name: (identifier) @variable)

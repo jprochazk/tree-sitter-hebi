@@ -20,19 +20,26 @@ module.exports = grammar({
     ),
 
     import_statement: $ => choice(
-      // import "string" as ident (whole module import)
+      // import IDENT
       seq(
         'import',
-        field('source', $.string),
-        'as',
-        field('alias', $.identifier),
+        field('name', $.identifier),
       ),
-      // import a, b, c from "string" (named imports)
+      // import IDENT from STRING|IDENT
       seq(
         'import',
-        field('imports', $.import_specifiers),
+        field('name', $.identifier),
         'from',
-        field('source', $.string),
+        field('source', choice($.string, $.identifier)),
+      ),
+      // import { import_item,+ } from STRING|IDENT
+      seq(
+        'import',
+        '{',
+        field('imports', $.import_specifiers),
+        '}',
+        'from',
+        field('source', choice($.string, $.identifier)),
       ),
     ),
 
