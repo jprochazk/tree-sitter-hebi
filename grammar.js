@@ -16,6 +16,7 @@ module.exports = grammar({
       $.variable_declaration,
       $.function_declaration,
       $.loop_statement,
+      $.while_statement,
       $.expression_statement,
     ),
 
@@ -80,6 +81,12 @@ module.exports = grammar({
 
     loop_statement: $ => seq(
       'loop',
+      field('body', $.block),
+    ),
+
+    while_statement: $ => seq(
+      'while',
+      field('condition', $._expression),
       field('body', $.block),
     ),
 
