@@ -200,7 +200,7 @@ module.exports = grammar({
         [choice('==', '!='), 4],
         [choice('>', '>=', '<', '<='), 5],
         [choice('+', '-'), 6],
-        [choice('*', '/'), 7],
+        [choice('*', '/', '%'), 7],
       ].map(([operator, precedence]) =>
         prec.left(precedence, seq(
           field('left', $._expression),
