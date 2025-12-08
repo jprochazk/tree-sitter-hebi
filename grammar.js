@@ -189,7 +189,7 @@ module.exports = grammar({
         $.field_expression,
         $.index_expression,
       )),
-      field('operator', choice('=', '+=', '-=', '*=', '/=')),
+      field('operator', choice('=', '+=', '-=', '*=', '/=', '%=')),
       field('right', $._expression),
     )),
 
