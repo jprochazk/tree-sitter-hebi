@@ -531,6 +531,10 @@
           "named": true
         },
         {
+          "type": "for_statement",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -874,6 +878,126 @@
           },
           {
             "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "for_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "iterator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "anonymous_function",
+            "named": true
+          },
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "break_expression",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "continue_expression",
+            "named": true
+          },
+          {
+            "type": "do_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list_expression",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "range_expression",
+            "named": true
+          },
+          {
+            "type": "return_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "table_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1521,6 +1645,166 @@
     }
   },
   {
+    "type": "range_expression",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "do_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list_expression",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "..",
+            "named": false
+          },
+          {
+            "type": "..=",
+            "named": false
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "do_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list_expression",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "return_expression",
     "named": true,
     "fields": {},
@@ -1610,6 +1894,10 @@
       "types": [
         {
           "type": "expression_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
           "named": true
         },
         {
@@ -2154,6 +2442,14 @@
     "named": false
   },
   {
+    "type": "..",
+    "named": false
+  },
+  {
+    "type": "..=",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -2247,6 +2543,10 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "from",
     "named": false
   },
@@ -2260,6 +2560,10 @@
   },
   {
     "type": "import",
+    "named": false
+  },
+  {
+    "type": "in",
     "named": false
   },
   {

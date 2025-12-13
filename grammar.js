@@ -17,6 +17,7 @@ module.exports = grammar({
       $.function_declaration,
       $.loop_statement,
       $.while_statement,
+      $.for_statement,
       $.expression_statement,
     ),
 
@@ -90,6 +91,14 @@ module.exports = grammar({
       field('body', $.block),
     ),
 
+    for_statement: $ => seq(
+      'for',
+      field('variable', $.identifier),
+      'in',
+      field('iterator', choice($._expression, $.range_expression)),
+      field('body', $.block),
+    ),
+
     expression_statement: $ => choice(
       $._expression,
     ),
@@ -124,6 +133,32 @@ module.exports = grammar({
       $.identifier,
       $.parenthesized_expression,
     ),
+
+    // Expressions that can appear as range operands (excludes table expressions)
+    _range_operand: $ => choice(
+      $.if_expression,
+      $.do_expression,
+      $.assignment_expression,
+      $.binary_expression,
+      $.unary_expression,
+      $.call_expression,
+      $.index_expression,
+      $.field_expression,
+      $.list_expression,
+      $.integer,
+      $.float,
+      $.boolean,
+      $.string,
+      $.nil,
+      $.identifier,
+      $.parenthesized_expression,
+    ),
+
+    range_expression: $ => prec.left(1, seq(
+      field('start', $._range_operand),
+      field('operator', choice('..', '..=')),
+      field('end', $._range_operand),
+    )),
 
     // Expressions that can follow return (excludes anonymous functions)
     _return_value_expression: $ => choice(

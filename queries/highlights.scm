@@ -9,6 +9,8 @@
 "else" @keyword.control.conditional
 "loop" @keyword.control.repeat
 "while" @keyword.control.repeat
+"for" @keyword.control.repeat
+"in" @keyword.control.repeat
 "return" @keyword.control.return
 "do" @keyword
 "let" @keyword
@@ -56,6 +58,8 @@
   "*"
   "/"
   "%"
+  ".."
+  "..="
 ] @operator
 
 ;; Punctuation
@@ -94,6 +98,10 @@
 
 (parameter_list
   (identifier) @variable.parameter)
+
+;; For loop variable
+(for_statement
+  variable: (identifier) @variable.parameter)
 
 (function_declaration
   name: (identifier) @function)
